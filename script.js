@@ -64,3 +64,30 @@ Entre em contato agora!`;
     }, 4000);
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menuToggle");
+  const menuNav = document.getElementById("menuNav");
+
+  const overlay = document.createElement("div");
+  overlay.classList.add("menu-overlay");
+  document.body.appendChild(overlay);
+
+  function closeMenu() {
+    menuToggle.classList.remove("active");
+    menuNav.classList.remove("open");
+    overlay.classList.remove("show");
+  }
+
+  function toggleMenu() {
+    menuToggle.classList.toggle("active");
+    menuNav.classList.toggle("open");
+    overlay.classList.toggle("show");
+  }
+
+  menuToggle.addEventListener("click", toggleMenu);
+  overlay.addEventListener("click", closeMenu);
+
+  document.querySelectorAll("nav.menu a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+});

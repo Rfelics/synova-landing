@@ -1,3 +1,20 @@
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+}
+
+nav.menu-desktop a {
+    white-space: nowrap; /* impede quebra feia */
+}
+
+nav.menu-desktop {
+    display: flex;
+    gap: 32px;
+    flex-wrap: nowrap; /* impede que os itens estiquem a tela */
+}
+
+
 /* ---------------- ROOT VARIABLES ---------------- */
 :root {
     --accent: #ff7a1a;
@@ -37,8 +54,10 @@ body {
 
 /* ---------------- HEADER ---------------- */
 header {
-    margin-bottom: 40px;
-    padding-top: 20px;
+    max-width: 100vw;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 .logo-row {
@@ -553,4 +572,234 @@ section {
     display: flex;
     justify-content: center;
     padding: 40px 0;
+}
+
+/* MENU HAMBURGUER MOBILE */
+.menu-toggle {
+  display: none;
+  width: 35px;
+  height: 28px;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.menu-toggle span {
+  height: 4px;
+  width: 100%;
+  background: #fff;
+  border-radius: 2px;
+  transition: .3s;
+}
+
+/* Abrir menu (X animation) */
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(12px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-12px) rotate(-45deg);
+}
+
+/* MENU MOBILE PREMIUM */
+@media (max-width: 900px) {
+
+  nav.menu {
+    position: fixed;
+    top: 0;
+    transform: translateX(100%);
+    width: 75vw;
+    max-width: 320px;
+    height: 100vh;
+    background: linear-gradient(180deg, #111 0%, #000 100%);
+    padding: 100px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    transition: .45s ease;
+    z-index: 999;
+    border-left: 1px solid rgba(255,255,255,0.05);
+    backdrop-filter: blur(8px);
+    box-shadow: -4px 0 16px rgba(0,0,0,0.45);
+  }
+
+  nav.menu.open {
+    transform: translateX(0%);
+
+  }
+
+  nav.menu a {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration: none;
+    opacity: .85;
+    transition: .25s ease;
+  }
+
+  nav.menu a:hover {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  nav.menu .btn-small {
+    margin-top: 16px;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 12px 26px;
+    border-radius: 28px;
+    background: linear-gradient(to right, #ff6500, #ffa033);
+    color: #111;
+    transition: .2s;
+  }
+
+  nav.menu .btn-small:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
+  }
+
+  /* Botão hamburguer */
+  .menu-toggle {
+    display: flex;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1001;
+  }
+
+  .menu-toggle span {
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: #fff;
+    border-radius: 4px;
+    transition: .3s;
+  }
+
+  .menu-toggle span:nth-child(1) { top: 0; }
+  .menu-toggle span:nth-child(2) { top: 13px; }
+  .menu-toggle span:nth-child(3) { bottom: 0; }
+
+  /* X animation */
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(13px) rotate(45deg);
+  }
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+  }
+
+  /* Overlay */
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(3px);
+    z-index: 998;
+  }
+  .menu-overlay.show {
+    display: block;
+  }
+}
+
+/* -------- VISUAL PADRÃO DESKTOP -------- */
+@media (min-width: 901px) {
+
+  /* Menu hamburguer não deve existir no desktop */
+  .menu-toggle {
+    display: none !important;
+  }
+
+  /* Menu segue horizontal */
+  nav.menu {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  nav.menu a {
+    font-size: 16px;
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Remove overlay no desktop */
+  .menu-overlay {
+    display: none !important;
+  }
+}
+
+/* HEADER DESKTOP */
+.header {
+  width: 100%;
+  padding: 20px 5%;
+  position: static; /* Agora fica no topo do site sem rolar junto */
+  background: transparent;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* MENU DESKTOP */
+@media (min-width: 901px) {
+  nav.menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    position: static;
+    background: none;
+    height: auto;
+    width: auto;
+    padding: 0;
+  }
+
+  nav.menu a {
+    color: #fff;
+    font-size: 17px;
+    opacity: .9;
+    text-decoration: none;
+    transition: .25s;
+  }
+
+  nav.menu a:hover {
+    opacity: 1;
+  }
+
+  .btn-small {
+    padding: 10px 22px;
+    border-radius: 28px;
+  }
+
+  .menu-toggle {
+    display: none !important;
+  }
+}
+
+header .container {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px; /* sem empurrar a tela */
+    gap: 16px;
 }
