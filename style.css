@@ -14,6 +14,16 @@ nav.menu-desktop {
     flex-wrap: nowrap; /* impede que os itens estiquem a tela */
 }
 
+#home {
+    width: 100vw;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 80px 24px;
+    border-radius: 0; /* remover curvas que criam espaço */
+    background: radial-gradient(circle at top left, #24170d, #0d0d0d);
+    box-sizing: border-box;
+}
+
 
 /* ---------------- ROOT VARIABLES ---------------- */
 :root {
@@ -541,12 +551,13 @@ section {
 /* SELECT SETA CUSTOM */
 .form-container select {
     appearance: none;
+    cursor: pointer;
     -webkit-appearance: none;
     background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='22' width='22' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
     background-repeat: no-repeat;
     background-position: right 14px center;
     background-size: 18px;
-    padding-right: 44px;
+    padding-right: 55px
 }
 
 .form-group {
@@ -802,4 +813,142 @@ header .container {
     align-items: center;
     padding: 0 24px; /* sem empurrar a tela */
     gap: 16px;
+}
+
+/* ==== Ajuste de blocos com bordas arredondadas ==== */
+
+/* Container geral para centralização */
+section,
+#home {
+    width: 100%;
+    max-width: 1300px; /* Ajuste fino do layout */
+    margin: 0 auto;
+    padding-left: 32px;
+    padding-right: 32px;
+    box-sizing: border-box;
+}
+
+/* Margem vertical consistente entre blocos */
+section,
+#home {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+/* Remove qualquer largura que ultrapasse o viewport */
+#home {
+    border-radius: 28px;
+    overflow: hidden; /* Mantém o arredondamento bonitinho */
+}
+
+/* ---- AJUSTE DO BLOCO DE FORMULÁRIO (CTA) ---- */
+
+#form-section {
+    width: 100%;
+    max-width: 1100px; /* alinhado com o Hero */
+    margin: 0 auto;
+    padding: 60px 24px; /* respiro no topo e nas laterais */
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 600px; /* 🔥 largura ideal do formulário */
+    margin: 0 auto; /* centraliza */
+    padding: 40px 32px;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 28px;
+    box-shadow: 0px 8px 45px rgba(0,0,0,0.45);
+}
+
+/* melhora o espaçamento da parte do título */
+#form-section .section-title,
+#form-section .section-subtitle {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* telas pequenas */
+@media(max-width: 600px) {
+    .form-wrapper {
+        padding: 30px 18px;
+    }
+}
+
+/* ---- CTA Performance reformulado ---- */
+#cta-performance {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 100px 24px;
+}
+
+.cta-wrapper {
+    width: 100%;
+    max-width: 760px;
+    text-align: center;
+}
+
+.cta-wrapper h2 {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.cta-wrapper p {
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    font-size: 18px;
+}
+
+.form-wrapper {
+    width: 100%;
+    padding: 36px;
+    border-radius: 24px;
+    background: rgba(15, 15, 15, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 46px rgba(0, 0, 0, 0.55);
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(20, 20, 20, 0.92);
+    color: #fff;
+    font-size: 15px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 17px;
+    border-radius: 14px;
+}
+
+/* Sucesso */
+#formMessage {
+    display: none;
+    margin-top: 14px;
+    font-size: 16px;
+    color: var(--accent-light);
+    text-align: center;
+}
+
+
+/* Mobile */
+@media(max-width: 600px) {
+    .cta-wrapper h2 {
+        font-size: 28px;
+    }
+    .form-wrapper {
+        padding: 26px;
+    }
 }

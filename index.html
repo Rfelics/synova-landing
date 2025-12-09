@@ -13,9 +13,8 @@
 <body>
 
     <div class="page">
-        
         <!-- HEADER -->
-
+         
         <header class="header">
             <div class="header-content">
 
@@ -168,50 +167,55 @@
         </section>
 
         <!-- CTA FINAL -->
+    <section id="cta-performance">
+    <div class="cta-wrapper">
+        
         <h2>Pronto para elevar sua performance?</h2>
         <p>Preencha o formulário rápido e nosso time entrará em contato.</p>
-        <section id="cta-performance">
-            <div class="form-container">
-                <form id="synovaForm">
 
-                    <div class="form-group">
-                        <input type="text" name="nome" placeholder="Seu nome completo" required>
-                    </div>
+        <div class="form-wrapper">
+            <form id="synovaForm">
 
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Seu melhor e-mail" required>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" name="empresa" placeholder="Nome da empresa" required>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" name="telefone" placeholder="Telefone (WhatsApp)" required>
-                    </div>
-
-                    <div class="form-group">
-                        <select name="segmento" required>
-                            <option value="">Selecione seu segmento</option>
-                            <option value="E-commerce">E-commerce</option>
-                            <option value="Educação">Educação</option>
-                            <option value="Serviços">Serviços</option>
-                            <option value="SaaS">SaaS</option>
-                            <option value="Consultoria">Consultoria</option>
-                            <option value="Outro">Outro</option>
-                        </select>
-                    </div>
-
-                    <button type="submit">Receber mais informações →</button>
-
-                </form>
-
-                <p id="formMessage" style="margin-top:12px;color:#ffb347;display:none;">
-                    ✔ Seus dados foram enviados com sucesso!
-                </p>
-
+            <div class="form-group">
+                <input type="text" name="nome" placeholder="Seu nome completo" required>
             </div>
-        </section>
+
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="empresa" placeholder="Nome da empresa" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="telefone" placeholder="Telefone (WhatsApp)" required>
+            </div>
+
+            <div class="form-group">
+                <select name="segmento" required>
+                    <option value="">Selecione seu segmento</option>
+                    <option value="E-commerce">E-commerce</option>
+                    <option value="Educação">Educação</option>
+                    <option value="Serviços">Serviços</option>
+                    <option value="SaaS">SaaS</option>
+                    <option value="Consultoria">Consultoria</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-primary">
+                Receber mais informações →
+            </button>
+        </form>
+
+        <p id="formMessage" class="form-success">
+            ✔ Seus dados foram enviados com sucesso!
+        </p>
+
+    </div>
+</section>
+
 
         <!-- FOOTER -->
         <footer class="footer">

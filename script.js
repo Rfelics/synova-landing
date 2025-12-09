@@ -5,36 +5,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("synovaForm");
     const message = document.getElementById("formMessage");
 
-    if (!form) return; // segurança caso o form não exista
+    if (!form || !message) return;
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        // Simular envio
-        setTimeout(() => {
+        const nome = form.nome.value.trim();
+        const email = form.email.value.trim();
+        const empresa = form.empresa.value.trim();
+        const telefone = form.telefone.value.trim();
+        const segmento = form.segmento.value;
+
+        if (!nome || !email || !empresa || !telefone || !segmento) {
+            message.textContent = "⚠ Preencha todos os campos!";
             message.style.display = "block";
+            return;
+        }
 
-            form.reset();
-
-            setTimeout(() => {
-                message.style.display = "none";
-            }, 4000);
-
-        }, 600);
-    });
-
-});
-
-document.getElementById("synovaForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const nome = this.nome.value;
-    const email = this.email.value;
-    const empresa = this.empresa.value;
-    const telefone = this.telefone.value;
-    const segmento = this.segmento.value;
-
-    const mensagem = 
+        const texto =
 `🚀 *Novo lead Synova Digital*  
 
 👤 *Nome:* ${nome}
@@ -43,51 +31,54 @@ document.getElementById("synovaForm").addEventListener("submit", function (e) {
 📱 *Telefone:* ${telefone}
 📊 *Segmento:* ${segmento}
 
-Entre em contato agora!`;
+👉 Entre em contato agora!`;
 
-    const encodedMsg = encodeURIComponent(mensagem);
+        const numeroWhats = "5511993674216";
+        const url = `https://wa.me/${numeroWhats}?text=${encodeURIComponent(texto)}`;
 
-    const numero = "5511993674216"; // seu número
+        // Mostrar confirmação visual
+        message.textContent = "✔ Seus dados foram enviados com sucesso!";
+        message.style.display = "block";
 
-    // ABRE O WHATSAPP COM A MENSAGEM
-    window.open(`https://wa.me/${numero}?text=${encodedMsg}`, "_blank");
+        // Abrir WhatsApp
+        window.open(url, "_blank");
 
-    // MOSTRAR MENSAGEM DE SUCESSO
-    document.getElementById("formMessage").style.display = "block";
+        // Resetar form após envio
+        form.reset();
 
-    // limpar campos
-    this.reset();
+        setTimeout(() => {
+            message.style.display = "none";
+        }, 4000);
+    });
 
-    // esconder mensagem depois de 4s
-    setTimeout(() => {
-        document.getElementById("formMessage").style.display = "none";
-    }, 4000);
-});
+    // MENU MOBILE
+    const menuToggle = document.getElementById("menuToggle");
+    const menuNav = document.getElementById("menuNav");
 
-document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.getElementById("menuToggle");
-  const menuNav = document.getElementById("menuNav");
+    if (menuToggle && menuNav) {
 
-  const overlay = document.createElement("div");
-  overlay.classList.add("menu-overlay");
-  document.body.appendChild(overlay);
+        const overlay = document.createElement("div");
+        overlay.classList.add("menu-overlay");
+        document.body.appendChild(overlay);
 
-  function closeMenu() {
-    menuToggle.classList.remove("active");
-    menuNav.classList.remove("open");
-    overlay.classList.remove("show");
-  }
+        function closeMenu() {
+            menuToggle.classList.remove("active");
+            menuNav.classList.remove("open");
+            overlay.classList.remove("show");
+        }
 
-  function toggleMenu() {
-    menuToggle.classList.toggle("active");
-    menuNav.classList.toggle("open");
-    overlay.classList.toggle("show");
-  }
+        function toggleMenu() {
+            menuToggle.classList.toggle("active");
+            menuNav.classList.toggle("open");
+            overlay.classList.toggle("show");
+        }
 
-  menuToggle.addEventListener("click", toggleMenu);
-  overlay.addEventListener("click", closeMenu);
+        menuToggle.addEventListener("click", toggleMenu);
+        overlay.addEventListener("click", closeMenu);
 
-  document.querySelectorAll("nav.menu a").forEach(link => {
-    link.addEventListener("click", closeMenu);
-  });
+        document.querySelectorAll("nav.menu a").forEach(link =>
+            link.addEventListener("click", closeMenu)
+        );
+    }
+
 });
