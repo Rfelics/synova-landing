@@ -29,9 +29,10 @@ body {
 }
 
 .page {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 32px 16px 24px;
+  max-width: 100%;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
 /* ---------------- HEADER ---------------- */
@@ -194,16 +195,18 @@ header {
 
 /* Card */
 .hero-card {
-    width: 100%;
-    max-width: 320px;
-    padding: 18px 18px 16px;
-    border-radius: 18px;
-    background: radial-gradient(circle at top left, rgba(255, 122, 26, 0.18), #121212);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+  width: 100%;
+  max-width: 380px; /* mais confortável em telas modernas */
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, rgba(255, 122, 26, 0.18), #121212);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0px 8px 45px rgba(0, 0, 0, 0.65);
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 auto; /* centraliza */
 }
 
 .hero-card small {
@@ -393,37 +396,96 @@ section {
 }
 
 /* ---------------- RESPONSIVO ---------------- */
+
+/* Tablets e telas menores */
 @media(max-width: 900px) {
-    .footer-content {
-        column-gap: 80px;
+
+    .page {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 24px;
     }
+
     #home {
+        display: grid;
         grid-template-columns: 1fr;
         padding: 40px 24px 44px;
+        text-align: center;
     }
-    .hero-right {
-        align-items: flex-start;
+
+    .hero-right,
+    .hero-left {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav.menu {
+        gap: 18px;
+    }
+
+    .footer-content {
+        column-gap: 48px;
     }
 }
 
+/* Celulares médios */
 @media(max-width: 780px) {
+
+    nav.menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+        font-size: 15px;
+    }
+
+    #home h1 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
     .footer-content {
         grid-template-columns: 1fr 1fr;
-        column-gap: 32px;
-        row-gap: 24px;
+        row-gap: 20px;
+        column-gap: 24px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
     }
 }
 
+/* Celulares pequenos */
 @media(max-width: 500px) {
+
+    .page {
+        padding: 0 18px;
+    }
+
+    nav.menu {
+        font-size: 14px;
+        gap: 10px;
+    }
+
+    #home h1 {
+        font-size: 28px;
+    }
+
+    .hero-card {
+        max-width: 90%;
+        padding: 18px;
+        margin: 0 auto;
+    }
+
     .footer-content {
         grid-template-columns: 1fr;
-        column-gap: 0;
-        row-gap: 20px;
-    }
-    #home h1 {
-        font-size: 30px;
+        row-gap: 18px;
+        text-align: center;
     }
 }
+
 
 /* ---------------- FORMULÁRIO CTA ---------------- */
 .form-container {
