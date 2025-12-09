@@ -1,0 +1,494 @@
+/* ---------------- ROOT VARIABLES ---------------- */
+:root {
+    --accent: #ff7a1a;
+    --accent-strong: #ff3c00;
+    --accent-light: #ffb347;
+
+    --text-main: #ffffff;
+    --text-muted: #a1a1aa;
+
+    --border-subtle: #2c2c2c;
+
+    --radius-lg: 18px;
+    --radius-md: 12px;
+
+    --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+    --spacing-section: 90px;
+}
+
+/* ---------------- BASE ---------------- */
+html {
+    scroll-behavior: smooth;
+}
+
+body { 
+    background: radial-gradient(circle at top left, #1a1a1a 0%, #0d0d0d 40%, #000 100%);
+    color: var(--text-main);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 32px 16px 24px;
+}
+
+/* ---------------- HEADER ---------------- */
+header {
+    margin-bottom: 40px;
+    padding-top: 20px;
+}
+
+.logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+}
+
+.logo img {
+    height: 62px;
+}
+
+/* ---------------- MENU ---------------- */
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.menu a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.menu a:hover {
+    color: var(--accent-light);
+}
+
+.btn-small {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: #111 !important;
+    font-weight: 600;
+}
+
+.btn-small:hover {
+    background: linear-gradient(135deg, var(--accent-light), var(--accent));
+}
+
+/* ---------------- HERO ---------------- */
+#home {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 40px;
+    padding: 56px 40px;
+    border-radius: 28px;
+    background: radial-gradient(circle at top left, rgba(255, 122, 26, 0.20), #141414 45%, #000 100%);
+    border: 1px solid #2c2c2c;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: var(--spacing-section);
+    position: relative;
+    overflow: hidden;
+}
+
+#home::after {
+    content: "";
+    position: absolute;
+    right: -120px;
+    top: -120px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(255, 122, 26, 0.30), transparent 60%);
+    filter: blur(6px);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.hero-left {
+    position: relative;
+    z-index: 2;
+}
+
+#home h1 {
+    font-size: clamp(38px, 4.3vw, 52px);
+    line-height: 1.08;
+    margin-bottom: 15px;
+    letter-spacing: -0.03em;
+}
+
+#home p {
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    font-size: 14px;
+    max-width: 600px;
+}
+
+.hero-ctas {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.btn {
+    border-radius: 600px;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-primary,
+.form-container button {
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #111;
+    box-shadow: 0 10px 30px rgba(255, 60, 0, 0.35);
+}
+
+.btn-primary:hover,
+.form-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 45px rgba(255, 60, 0, 0.55);
+}
+
+/* ---------------- HERO RIGHT ---------------- */
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.hero-pill {
+    align-self: flex-end;
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(25, 25, 25, 0.92);
+    font-size: 13px;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 6px;
+    margin-bottom: -6px;
+}
+
+.hero-pill .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    box-shadow: 0 0 10px rgba(255, 122, 26, 0.65);
+}
+
+/* Card */
+.hero-card {
+    width: 100%;
+    max-width: 320px;
+    padding: 18px 18px 16px;
+    border-radius: 18px;
+    background: radial-gradient(circle at top left, rgba(255, 122, 26, 0.18), #121212);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hero-card small {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #9ca3af;
+}
+
+.hero-card strong {
+    font-size: 22px;
+    color: #f9fafb;
+}
+
+.hero-card span {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* Métricas */
+.hero-metrics {
+    display: flex;
+    gap: 14px;
+    margin-top: 6px;
+}
+
+.hero-metrics-item {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.hero-metrics-item b {
+    font-size: 14px;
+    color: #e5e7eb;
+}
+
+.hero-metrics-item span {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+/* ---------------- TITLES ---------------- */
+.section-title {
+    font-size: 36px;
+    margin-bottom: 16px;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    max-width: 720px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+}
+
+section {
+    margin-bottom: var(--spacing-section);
+}
+
+/* ---------------- SOBRE ---------------- */
+#sobre .card {
+    background: #121212;
+    padding: 36px;
+    border-radius: 20px;
+    border: 1px solid var(--border-subtle);
+}
+
+#sobre p {
+    margin-bottom: 18px;
+    font-size: 17px;
+    color: var(--text-muted);
+}
+
+/* ---------------- SERVIÇOS ---------------- */
+#servicos .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+}
+
+.service-card {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    padding: 28px 24px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.25s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-strong);
+    box-shadow: 0 0 18px rgba(255, 60, 0, 0.55);
+}
+
+/* ---------------- PROCESSO ---------------- */
+#processo .checklist {
+    list-style: none;
+    display: grid;
+    gap: 14px;
+    font-size: 17px;
+}
+
+.checklist li::before {
+    content: "✔ ";
+    color: var(--accent-light);
+}
+
+/* ---------------- CTA FINAL ---------------- */
+#cta-final {
+    padding: 50px;
+    border-radius: 24px;
+    background: radial-gradient(circle at top left, rgba(255, 122, 26, 0.18), #0d0d0d);
+    border: 1px solid rgba(255, 122, 26, 0.4);
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+/* ---------------- FOOTER ---------------- */
+.footer {
+    margin-top: 16px;
+    padding: 32px 0 28px;
+    border-top: 1px solid #1f2937;
+    background: #000;
+}
+
+.footer-content {
+    max-width: 1120px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 140px;
+    row-gap: 24px;
+}
+
+.footer-column h4 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.footer-column p,
+.footer-column a {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 8px;
+    text-decoration: none;
+}
+
+.footer-logo {
+    height: 30px;
+    opacity: 0.85;
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.social-icons img {
+    width: 22px;
+    height: 22px;
+    opacity: 0.55;
+    filter: grayscale(100%);
+    transition: .2s ease;
+}
+
+.social-icons img:hover {
+    opacity: 1;
+    filter: grayscale(0);
+    transform: scale(1.15);
+}
+
+.footer-bottom {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    border-top: 1px solid #1f2937;
+    padding-top: 18px;
+    margin-top: 24px;
+}
+
+/* ---------------- RESPONSIVO ---------------- */
+@media(max-width: 900px) {
+    .footer-content {
+        column-gap: 80px;
+    }
+    #home {
+        grid-template-columns: 1fr;
+        padding: 40px 24px 44px;
+    }
+    .hero-right {
+        align-items: flex-start;
+    }
+}
+
+@media(max-width: 780px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 32px;
+        row-gap: 24px;
+    }
+}
+
+@media(max-width: 500px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: 20px;
+    }
+    #home h1 {
+        font-size: 30px;
+    }
+}
+
+/* ---------------- FORMULÁRIO CTA ---------------- */
+.form-container {
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 22px;
+    background: rgba(15, 15, 15, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+}
+
+.form-container input,
+.form-container select {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(20, 20, 20, 0.8);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: .2s ease;
+    box-sizing: border-box;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+    background: rgba(35, 35, 35, 0.9);
+    border-color: var(--accent);
+}
+
+/* SELECT SETA CUSTOM */
+.form-container select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='22' width='22' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 18px;
+    padding-right: 44px;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+/* BOTÃO DO FORM */
+.form-container button {
+    padding: 18px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    font-size: 18px;
+    font-weight: 600;
+    color: #111;
+    border: none;
+    cursor: pointer;
+    margin-top: 14px;
+    box-shadow: 0 8px 32px rgba(255, 60, 0, 0.35);
+    transition: .2s ease;
+}
+
+#cta-performance {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
